@@ -9,7 +9,7 @@ public class StringPalindroma {
 		
 		// Prendo la stringa dall'utente e la salvo in "userString".
 		Scanner in = new Scanner(System.in);
-		String userString = in.nextLine();
+		String userString = getValidString(in, "Inserisci una stringa:");
 		System.out.println("Stringa inserita: " + userString);
 		in.close();
 		
@@ -48,6 +48,29 @@ public class StringPalindroma {
 		
 		System.out.println("Stringa girata: " + turnedString);
 		return turnedString;
+	}
+	
+	//TODO: VALIDAZIONE DA FARE
+	/* Questo metodo ha il compito di richiedere un input di tipo String di
+	 * almeno 1 carattere che non sia uno spazio.
+	 * Se ciò che viene fornito dall'utente non è una stringa che rispetta
+	 * le caratteristiche, verrà richiesta all'infinito. */
+	public static String getValidString(Scanner in, String prompt) {
+		
+		String errorMessage = "\nERROR:\nInput non valido. Per favore, inserisci una stringa lunga almeno 1 carattere che non sia uno \"spazio\".\n";
+		
+		// Finchè non ottengo una stringa che sia di almeno 1 carattere e diversa da "spazio"
+		while (true) {
+		    System.out.println(prompt);
+
+	        String inString = in.nextLine().trim(); // Leggo la riga
+	        if (inString.length() > 0) {
+	            return inString; // Se la stringa senza spazi è di almeno 1 carattere, la ritorno
+	        } else {
+	            System.out.println(errorMessage); // Mostro il messaggio di errore
+	        }
+		}
+
 	}
 
 }
